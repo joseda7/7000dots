@@ -1,0 +1,38 @@
+:root {
+    --black: rgb(32 32 32);
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--black);
+}
+
+main {
+    display: block;
+    margin: 50px 20px;
+}
+
+h1 {
+    display: block;
+    text-align: center;
+    color: var(--white);
+    font-family: monospace;
+    margin: 70px 0px;
+}
+
+.dot {
+    position: relative;
+}
+
+.dot:hover {
+    r: 1.1;
+    fill: var(--white);
+}
+
+.illusionGroup {
+    display: block;
+}
+
+.illusionGroup_dot {
+    pointer-events: none;
+}
