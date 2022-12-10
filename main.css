@@ -3,21 +3,60 @@
     --white: #ffffff;
 }
 
+* {
+    font-family: monospace;
+}
+
 body {
     background-color: var(--black);
+    margin: 0;
+    display: block;
+    position: relative;
 }
 
 main {
     display: block;
-    margin: 50px 20px;
+    margin: 20px 20px;
 }
 
 h1 {
     display: block;
     text-align: center;
     color: var(--white);
-    font-family: monospace;
-    margin: 70px 0px;
+    font-size: 9px;
+    width: fit-content;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+}
+
+section.sectionIntro {
+    height: 80vh;
+    vertical-align: middle;
+    display: table-cell;
+    width: 100vw;
+}
+
+.text {
+    color: var(--white);
+    font-size: 17px;
+    letter-spacing: 10px;
+    margin: 0px auto 15px;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.quote {
+    color: var(--white);
+    font-style: italic;
+    width: 315px;
+    font-size: 17px;
+    margin: 150px auto;
+}
+
+.quote_author {
+    font-size: 12px;
+    color: gray;
 }
 
 .dot {
@@ -27,6 +66,7 @@ h1 {
 .dot:hover {
     r: 1.1;
     fill: var(--white);
+    cursor: pointer;
 }
 
 .illusionGroup {

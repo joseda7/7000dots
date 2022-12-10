@@ -3,18 +3,18 @@ const WIDTH_POINTS = 70; // 70 * 100 = 7000
 const HEIGHT_POINTS = 100; // 70 * 100 = 7000
 const X_SPACING = 3.8;
 const Y_SPACING = 3.8;
-const RADIUS_DOT_DEFAULT = 1;
+const RADIUS_DOT_DEFAULT = 0.7;
 const MARGIN_TOP = 1.8;
 const MARGIN_LEFT = 1.8;
 const COLOR_PALETTE = ['#6429CD'];
-const MAX_CONECTIONS = 100;
-const ILLUSION_FACTOR = 1.8;
+const INI_SELECTED_POINT = 34;
+const ILLUSION_FACTOR = 2;
 let dots = [];
 
 
 function init() {    
     createDotsRectangle( WIDTH_POINTS, HEIGHT_POINTS );
-    drawDotsIllusion( "star", 0, 5 );
+    drawDotsIllusion( "star", INI_SELECTED_POINT, 5 );
     events();
 }
 
@@ -25,8 +25,8 @@ function events() {
     document.querySelectorAll('.dot').forEach(item => {
         item.addEventListener('mouseenter', event => {
             currentIdNum = parseInt(event.target.id.replace( /^\D+/g, ''));
-            illusionElement.style.transform = "translate(" + (dots[currentIdNum].x - dots[0].x) + "px," 
-                                + (dots[currentIdNum].y - dots[0].y) +"px)";
+            illusionElement.style.transform = "translate(" + (dots[currentIdNum].x - dots[INI_SELECTED_POINT].x) + "px," 
+                                + (dots[currentIdNum].y - dots[INI_SELECTED_POINT].y) +"px)";
         })
         // item.addEventListener('mouseleave', event => {
         //     console.log("mouseleave");
