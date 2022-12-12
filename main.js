@@ -21,6 +21,7 @@ function init() {
 function events() {
     var currentIdNum = 0;
     var illusionElement = document.getElementById("illusionGroup");
+    var btnChangeMode = document.getElementById("btn-change-mode");
 
     document.querySelectorAll('.dot').forEach(item => {
         item.addEventListener('mouseenter', event => {
@@ -31,6 +32,11 @@ function events() {
         // item.addEventListener('mouseleave', event => {
         //     console.log("mouseleave");
         // })
+    }, false);
+
+    btnChangeMode.addEventListener('click', event => {
+        console.log (event.target.id);
+        document.body.classList.toggle("light-mode");
     }, false);
 }
 

@@ -1,14 +1,24 @@
 :root {
-    --black: rgb(32 32 32);
-    --white: #ffffff;
+    --onyx: rgb(32, 32, 32);
+    --onyx-a0: rgba(32, 32, 32, 0);
+    --white: rgb(255, 255, 255);
+    --purple: rgb(100, 41, 204);
+    --indigo: rgb(94, 40, 185);
+    --gray: rgb(128, 128, 128);
+}
+
+.light-mode {
+    --onyx: rgb(255, 255, 255);
+    --onyx-a0: rgba(255, 255, 255, 0);
+    --white: rgb(32 32 32);
 }
 
 * {
-    font-family: monospace;
+    font-family: "Poppins";
 }
 
 body {
-    background-color: var(--black);
+    background-color: var(--onyx);
     margin: 0;
     display: block;
     position: relative;
@@ -17,17 +27,47 @@ body {
 main {
     display: block;
     margin: 20px 20px;
+    overflow: hidden;
 }
 
-h1 {
-    display: block;
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 20px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    background: var (--dark);
+    background: linear-gradient(180deg, var(--onyx) 30%, var(--onyx-a0) 100%);
+
+}
+
+.color-mode button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--white);
+    display: inline-block;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.color-mode button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+a {
     text-align: center;
     color: var(--white);
-    font-size: 9px;
     width: fit-content;
-    position: fixed;
-    top: 10px;
-    left: 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 section.sectionIntro {
@@ -39,11 +79,20 @@ section.sectionIntro {
 
 .text {
     color: var(--white);
+    font-size: 12px;
+}
+
+.text_title {
     font-size: 17px;
     letter-spacing: 10px;
     margin: 0px auto 15px;
     font-weight: bold;
     width: fit-content;
+}
+
+.text_small {
+    color: var(--white);
+    font-size: 11px;
 }
 
 .quote {
@@ -56,7 +105,7 @@ section.sectionIntro {
 
 .quote_author {
     font-size: 12px;
-    color: gray;
+    color: var(--gray);
 }
 
 .dot {
@@ -75,4 +124,48 @@ section.sectionIntro {
 
 .illusionGroup_dot {
     pointer-events: none;
+}
+
+.pragmapowers {
+    list-style: none; 
+    display: flex;
+    padding: 0;
+    margin: 50px 0;
+}
+ 
+.pragmapowers div {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+}
+
+.pragmapowers div:hover {
+    opacity: 0.7;
+    cursor: pointer;
+} 
+
+footer {
+    padding: 20px 0px 0px;
+    width: 100%;
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+    text-align: right;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5);
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.4);
 }
