@@ -1,16 +1,23 @@
 :root {
     --onyx: rgb(32, 32, 32);
     --onyx-a0: rgba(32, 32, 32, 0);
-    --white: rgb(255, 255, 255);
+    --bone: rgb(255, 255, 255);
     --purple: rgb(100, 41, 204);
     --indigo: rgb(94, 40, 185);
     --gray: rgb(128, 128, 128);
 }
 
-.light-mode {
+.--light {
     --onyx: rgb(255, 255, 255);
     --onyx-a0: rgba(255, 255, 255, 0);
-    --white: rgb(32 32 32);
+    --bone: rgb(32 32 32);
+}
+.--hide {
+    opacity: 0;
+}
+
+#txt-you-here {
+    transition: opacity 0.3s ease-in;
 }
 
 * {
@@ -39,34 +46,36 @@ header {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    background: var (--dark);
+    background: var (--onyx);
     background: linear-gradient(180deg, var(--onyx) 30%, var(--onyx-a0) 100%);
+    align-items: center;
 
 }
 
-.color-mode button {
+#btn-change-mode {
     width: 30px;
     height: 30px;
-    border: 1px solid var(--white);
+    background: var(--bone);
     display: inline-block;
     border-radius: 50%;
-    background: transparent;
+    border: none;
+    transition: scale 0.2s ease-in;
 }
 
-.color-mode button:hover {
+#btn-change-mode:hover {
     cursor: pointer;
-    opacity: 0.6;
+    scale: 0.8;
 }
 
 a {
     text-align: center;
-    color: var(--white);
+    color: var(--bone);
     width: fit-content;
     text-decoration: none;
 }
 
 a:hover {
-    font-weight: bold;
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -78,7 +87,7 @@ section.sectionIntro {
 }
 
 .text {
-    color: var(--white);
+    color: var(--bone);
     font-size: 12px;
 }
 
@@ -91,12 +100,12 @@ section.sectionIntro {
 }
 
 .text_small {
-    color: var(--white);
-    font-size: 11px;
+    color: var(--bone);
+    font-size: 9px;
 }
 
 .quote {
-    color: var(--white);
+    color: var(--bone);
     font-style: italic;
     width: 315px;
     font-size: 17px;
@@ -114,7 +123,7 @@ section.sectionIntro {
 
 .dot:hover {
     r: 1.1;
-    fill: var(--white);
+    fill: var(--bone);
     cursor: pointer;
 }
 
@@ -130,21 +139,27 @@ section.sectionIntro {
     list-style: none; 
     display: flex;
     padding: 0;
-    margin: 50px 0;
+    margin: 150px 0;
 }
  
-.pragmapowers div {
+.pragmapowers img {
     margin: 0 auto;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--white);
+    display: block;
+    transition: scale 0.1s ease-in;
+    opacity: 0.1;
 }
 
-.pragmapowers div:hover {
-    opacity: 0.7;
+.pragmapowers img:hover {
+    scale: 1.1;
     cursor: pointer;
+    opacity: 1;
 } 
+
+.light-mode .pragmapowers {
+    mix-blend-mode: difference;
+}
 
 footer {
     padding: 20px 0px 0px;
@@ -154,7 +169,6 @@ footer {
 }
 
 /* SCROLL */
-
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -168,4 +182,12 @@ footer {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(128, 128, 128, 0.4);
+}
+
+/* TEXT SELECTION */
+::-moz-selection {
+    background: var(--purple);
+} 
+::selection {
+    background: var(--purple);
 }
