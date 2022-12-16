@@ -1,47 +1,65 @@
 :root {
     --onyx: rgb(32, 32, 32);
     --onyx-a0: rgba(32, 32, 32, 0);
-    --bone: rgb(255, 255, 255);
+    --white: rgb(255, 255, 255);
     --purple: rgb(100, 41, 204);
     --indigo: rgb(94, 40, 185);
     --gray: rgb(128, 128, 128);
 }
-
-.--light {
+.--light-mode {
     --onyx: rgb(255, 255, 255);
     --onyx-a0: rgba(255, 255, 255, 0);
-    --bone: rgb(32 32 32);
+    --white: rgb(32 32 32);
 }
 .--hide {
     opacity: 0;
 }
-
-#txt-you-here {
-    transition: opacity 0.3s ease-in;
+.--animate-fadein {
+    opacity: 0;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
-
+.--animate-fadein-2 {
+    opacity: 0;
+    animation: fadeInAnimation ease 7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
 * {
     font-family: "Poppins";
 }
-
 body {
     background-color: var(--onyx);
     margin: 0;
     display: block;
     position: relative;
-}
 
+}
 main {
     display: block;
-    margin: 20px 20px;
+    margin: 20px 10px;
     overflow: hidden;
 }
+a {
+    text-align: center;
+    color: var(--white);
+    width: fit-content;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
+
+/* HEADER --------------------------- */
 header {
     position: fixed;
     top: 0px;
     left: 0px;
-    padding: 20px 20px;
+    padding: 20px 20px 40px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -49,126 +67,214 @@ header {
     background: var (--onyx);
     background: linear-gradient(180deg, var(--onyx) 30%, var(--onyx-a0) 100%);
     align-items: center;
-
+    z-index: 10;
 }
-
 #btn-change-mode {
     width: 30px;
     height: 30px;
-    background: var(--bone);
+    background: var(--white);
     display: inline-block;
     border-radius: 50%;
     border: none;
-    transition: scale 0.2s ease-in;
+    position: relative;
+    transition: scale 0.15s ease-in;
 }
-
 #btn-change-mode:hover {
     cursor: pointer;
-    scale: 0.8;
+    scale: 1.2;
+}
+#btn-change-mode span:first-child {
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    border-radius: 10px 0 0 10px;
+    top: 9px;
+    left: 9px;
+    background-color: var(--onyx);
+    border: 1px solid var(--onyx);
+}
+#btn-change-mode span:nth-child(2) {
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    border-radius: 0px 10px 10px 0px;
+    top: 9px;
+    right: 9px;
+    border: 1px solid var(--onyx);
 }
 
-a {
-    text-align: center;
-    color: var(--bone);
-    width: fit-content;
-    text-decoration: none;
-}
 
-a:hover {
-    text-decoration: underline;
-    cursor: pointer;
+/* SECTIONS --------------------------------------- */
+section {
+    position: relative;
 }
-
 section.sectionIntro {
-    height: 80vh;
+    height: 85vh;
     vertical-align: middle;
     display: table-cell;
     width: 100vw;
 }
-
-.text {
-    color: var(--bone);
-    font-size: 12px;
+section.sectionDots {
+    margin-bottom: 60px;
+    opacity: 0;
+}
+.sectionPragmapowers {
+    margin-top: 70px;
 }
 
+
+/* TEXT ------------------------------------------- */
+.text {
+    color: var(--white);
+    font-size: 12px;
+}
 .text_title {
     font-size: 17px;
     letter-spacing: 10px;
     margin: 0px auto 15px;
-    font-weight: bold;
     width: fit-content;
+    text-transform: uppercase;
 }
-
 .text_small {
-    color: var(--bone);
-    font-size: 9px;
+    font-size: 10px;
 }
-
-.quote {
-    color: var(--bone);
+.text_x-small {
+    font-size: 6px;
+}
+.text_quote {
     font-style: italic;
     width: 315px;
-    font-size: 17px;
+    font-size: 15px;
     margin: 150px auto;
 }
-
-.quote_author {
-    font-size: 12px;
+.text_author {
+    font-size: 10px;
     color: var(--gray);
 }
+.text_paragraph {
+    width: 225px;
+    margin: 0px auto;
+}
+.text_paragraph span {
+    animation: blinker 1s step-end infinite;
+}
+@keyframes blinker { 50% {opacity: 0} }
 
-.dot {
+
+/* SVG CONTAINER ----------------------------- */
+.svg-container {
     position: relative;
 }
-
-.dot:hover {
-    r: 1.1;
-    fill: var(--bone);
-    cursor: pointer;
+.svg-container::before {
+    content: "1";
+    color: var(--white);
+    font-size: 6px;
+    position: absolute;
+    left: 6px;
+    top: -12px;
+    transform: rotate(90deg);
+}
+.svg-container::after {
+    content: "7000";
+    color: var(--white);
+    font-size: 6px;
+    position: absolute;
+    right: -4px;
+    bottom: -16px;
+    transform: rotate(90deg);
+    letter-spacing: 3px;
 }
 
-.illusionGroup {
-    display: block;
-}
 
-.illusionGroup_dot {
-    pointer-events: none;
-}
-
+/* PRAGMAPOWER SYMBOLS -------------------------- */
 .pragmapowers {
     list-style: none; 
     display: flex;
     padding: 0;
-    margin: 150px 0;
+    margin: 50px 0;
+    flex-direction: column;
 }
- 
-.pragmapowers img {
-    margin: 0 auto;
-    width: 50px;
-    height: 50px;
-    display: block;
-    transition: scale 0.1s ease-in;
-    opacity: 0.1;
+.pragmapowers_item {
+    margin: 50px auto;
+    width: 40px;
+    transition: scale 0.15s ease-in;
+    opacity: 0.3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-.pragmapowers img:hover {
-    scale: 1.1;
-    cursor: pointer;
+.pragmapowers_item img {
+    width: 100%;
+}
+.pragmapowers_item:hover {
+    scale: 1.2;
     opacity: 1;
 } 
-
-.light-mode .pragmapowers {
+.pragmapowers_text {
+    position: relative;
+    color: white;
+    text-transform: uppercase;
+    width: 190px;
+    letter-spacing: 5px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+.pragmapowers_item:hover .pragmapowers_text {
+    opacity: 1;
+}
+.--light-mode .pragmapowers, .--light-mode .footer_icon {
     mix-blend-mode: difference;
 }
 
-footer {
-    padding: 20px 0px 0px;
-    width: 100%;
-    border-top: 1px solid rgba(128, 128, 128, 0.4);
-    text-align: right;
+/* SEPARATOR -------------------------------- */
+.separator {
+    position: relative;
+    display: block;
+    width: 99%;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+    margin: 0 auto;
+}
+.separator::after {
+    content: "";
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: rgba(128, 128, 128, 1);
+}
+.separator::before {
+    content: "";
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(128, 128, 128, 1);
 }
 
-/* SCROLL */
+
+/* FOOTER ------------------------------------- */
+footer {
+    padding: 20px 10px 0px 0px;
+    width: 100%;
+    /* border-top: 1px solid rgba(128, 128, 128, 0.4); */
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.footer_icon {
+    width: 40px;
+}
+
+
+/* SCROLL -------------------- */
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -184,10 +290,72 @@ footer {
     background: rgba(128, 128, 128, 0.4);
 }
 
-/* TEXT SELECTION */
+
+/* TEXT SELECTION -------------------- */
 ::-moz-selection {
     background: var(--purple);
 } 
 ::selection {
     background: var(--purple);
+}
+
+
+/* DOTS INTERACTION -------------------- */
+.dot {
+    position: relative;
+    pointer-events: none;
+}
+.dot:hover {
+    cursor: pointer;
+    stroke:var(--white); 
+    stroke-width: 0.3;
+}
+.illusionGroup {
+    display: block;
+}
+.illusionGroup_dot {
+    pointer-events: none;
+}
+#dot34 {
+    fill: var(--white);
+    stroke:var(--white); 
+    stroke-width: 0.2;
+}
+.rect {
+    /* stroke: gray;  */
+    /* stroke-width: 0.1; */
+    fill: transparent;
+}
+.rect:hover + .dot {
+    stroke:var(--white); 
+    stroke-width: 0.3;
+}
+.rect:hover {
+    cursor: pointer;
+}
+#txt-you-here {
+    transition: opacity 0.3s ease-in;
+}
+.txt {
+    color: var(--white);
+}
+
+/* SCROLL DOWN ---------------------------------- */
+.scroll-down {
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg);
+    border-bottom: 1px solid var(--white);
+    border-left: 1px solid var(--white);
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    bottom: 20px;
+}
+
+/* FADE IN ANIMATION ---------------------------------- */
+@keyframes fadeInAnimation {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
 }
